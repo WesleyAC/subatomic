@@ -1,3 +1,5 @@
+// This file defines a Writer that is used to wirte to a VGA terminal. It also
+// provides a static `WRITER` instance - which is what will likely be used.
 use core::ptr::Unique;
 use core::fmt;
 use volatile::Volatile;
@@ -5,6 +7,7 @@ use spin::Mutex;
 use console::color::ColorCode;
 use console::color::Color;
 
+// Represents a character on a VGA terminal
 #[repr(C)]
 #[derive(Debug, Clone, Copy)]
 struct ScreenChar {
@@ -15,10 +18,12 @@ struct ScreenChar {
 const BUFFER_HEIGHT: usize = 25;
 const BUFFER_WIDTH: usize = 80;
 
+// Represents an 80x25 terminal
 struct Buffer {
     chars: [[Volatile<ScreenChar>; BUFFER_WIDTH]; BUFFER_HEIGHT],
 }
 
+// A struct used to write to a Buffer
 pub struct Writer {
     column_position: usize,
     color_code: ColorCode,

@@ -1,3 +1,5 @@
+// This file defines what happens on a panic, as well as implementing a few
+// other functions that are needed in order to compile.
 use core::fmt;
 use console;
 

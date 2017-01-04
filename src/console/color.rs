@@ -1,3 +1,6 @@
+// This file defines color codes that are valid on a VGA terminal
+
+// A single color
 #[allow(dead_code)]
 #[repr(u8)]
 #[derive(Debug, Clone, Copy)]
@@ -20,6 +23,7 @@ pub enum Color {
     White      = 15,
 }
 
+// A color of a characeter (containing both a foreground and background color)
 #[derive(Debug, Clone, Copy)]
 pub struct ColorCode(u8);
 
