@@ -9,10 +9,12 @@ extern crate spin;
 extern crate multiboot2;
 
 pub mod panic;
+
+#[macro_use]
 mod console;
 
 #[no_mangle]
 pub extern fn kmain(multiboot_information_address: usize) -> ! {
-    console::write_str("Welcome to subatomic");
+    print!("Text {}", 42);
     loop{}
 }

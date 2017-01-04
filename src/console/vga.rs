@@ -1,4 +1,5 @@
 use core::ptr::Unique;
+use core::fmt;
 use volatile::Volatile;
 use spin::Mutex;
 use console::color::ColorCode;
@@ -25,12 +26,6 @@ pub struct Writer {
 }
 
 impl Writer {
-    pub fn write_str(&mut self, s: &str) {
-        for byte in s.bytes() {
-          self.write_byte(byte)
-        }
-    }
-
     pub fn write_byte(&mut self, byte: u8) {
         match byte {
             b'\n' => self.new_line(),
@@ -77,6 +72,15 @@ impl Writer {
         for col in 0..BUFFER_WIDTH {
             self.buffer().chars[row][col].write(blank);
         }
+    }
+}
+
+impl fmt::Write for Writer {
+    fn write_str(&mut self, s: &str) -> fmt::Result {
+        for byte in s.bytes() {
+          self.write_byte(byte)
+        }
+        Ok(())
     }
 }
 
