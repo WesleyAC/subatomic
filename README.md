@@ -3,7 +3,7 @@ subatomic
 
 subatomic is a small toy OS, written in Rust (with a bit of x86 ASM where it's needed).
 
-It's roughly based on [intermezzOS](https://github.com/intermezzOS/kernel) and [Philipp Oppermann's blog_os](https://github.com/phil-opp/blog_os).
+It's roughly based on [intermezzOS](https://github.com/intermezzOS/kernel), [Philipp Oppermann's blog_os](https://github.com/phil-opp/blog_os), and [toyos-rs](https://github.com/emk/toyos-rs).
 
 Currently, it just has a simple VGA driver, but more stuff is being worked on :)
 

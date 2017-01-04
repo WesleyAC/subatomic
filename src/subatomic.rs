@@ -1,6 +1,7 @@
 #![feature(lang_items)]
 #![feature(const_fn)]
 #![feature(unique)]
+#![feature(asm)]
 #![no_std]
 
 extern crate rlibc;
@@ -11,7 +12,8 @@ extern crate multiboot2;
 
 #[macro_use]
 mod console;
-pub mod panic;
+mod input;
+mod panic;
 
 #[no_mangle]
 pub extern fn kmain(multiboot_information_address: usize) -> ! {
@@ -51,5 +53,8 @@ pub extern fn kmain(multiboot_information_address: usize) -> ! {
     println!("Multiboot:");
     println!("Start: 0x{:x} End: 0x{:x}", multiboot_start, multiboot_end);
 
-    loop{}
+    loop{
+        let scancode = input::KEYBOARD.lock().read();
+        println!("{}", scancode);
+    }
 }
