@@ -9,6 +9,7 @@
 ///   http://www.computer-engineering.org/ps2keyboard/scancodes1.html
 pub fn from_scancode(code: usize) -> Option<char> {
     let printable = match code {
+        0x1c => '\n',
         0x1e => 'a',
         0x30 => 'b',
         0x2e => 'c',
