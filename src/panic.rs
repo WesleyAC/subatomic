@@ -1,4 +1,5 @@
 use core::fmt;
+use console;
 
 #[lang = "eh_personality"]
 extern fn eh_personality() {
@@ -9,6 +10,9 @@ extern fn eh_personality() {
 pub extern fn rust_begin_panic(_msg: fmt::Arguments,
                                _file: &'static str,
                                _line: u32) -> ! {
+    println!("PANIC!");
+    println!("{}:{}", _file, _line);
+    println!("{}", _msg);
     loop {}
 }
 
