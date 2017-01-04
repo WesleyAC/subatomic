@@ -3,6 +3,10 @@ pub mod vga;
 
 use core::fmt::Write;
 
+pub fn clear_screen() {
+    vga::WRITER.lock().clear_screen()
+}
+
 pub fn set_color(color: color::ColorCode) {
     vga::WRITER.lock().set_color(color);
 }

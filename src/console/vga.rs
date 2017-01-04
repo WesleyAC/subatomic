@@ -51,6 +51,12 @@ impl Writer {
         self.color_code = color;
     }
 
+    pub fn clear_screen(&mut self) {
+        for i in 1..BUFFER_HEIGHT {
+            self.new_line();
+        }
+    }
+
     fn buffer(&mut self) -> &mut Buffer {
         unsafe{ self.buffer.get_mut() }
     }
