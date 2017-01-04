@@ -30,6 +30,7 @@ pub struct Writer {
     buffer: Unique<Buffer>,
 }
 
+#[allow(dead_code)]
 impl Writer {
     pub fn write_byte(&mut self, byte: u8) {
         match byte {

@@ -1,12 +1,12 @@
 pub mod color;
 pub mod vga;
 
-use core::fmt::Write;
-
+#[allow(dead_code)]
 pub fn clear_screen() {
     vga::WRITER.lock().clear_screen()
 }
 
+#[allow(dead_code)]
 pub fn set_color(color: color::ColorCode) {
     vga::WRITER.lock().set_color(color);
 }
