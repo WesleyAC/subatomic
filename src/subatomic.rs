@@ -53,8 +53,13 @@ pub extern fn kmain(multiboot_information_address: usize) -> ! {
     println!("Multiboot:");
     println!("Start: 0x{:x} End: 0x{:x}", multiboot_start, multiboot_end);
 
+    let mut kbd: input::poll::PollingKeyboard = input::poll::PollingKeyboard::new(handle_char);
+
     loop{
-        let scancode = input::KEYBOARD.lock().read();
-        println!("{}", scancode);
+        kbd.update();
     }
+}
+
+fn handle_char(c: u8) {
+    println!("{}", c);
 }
