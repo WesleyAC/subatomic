@@ -12,7 +12,7 @@ mod vga;
 
 #[no_mangle]
 pub extern fn kmain() -> ! {
-    vga::WRITER.lock().write_str("aaaaa");
+    vga::WRITER.lock().write_str("Welcome to subatomic");
     loop{}
 }
 
