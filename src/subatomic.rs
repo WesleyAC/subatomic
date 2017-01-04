@@ -15,6 +15,7 @@ mod console;
 
 #[no_mangle]
 pub extern fn kmain(multiboot_information_address: usize) -> ! {
-    print!("Text {}", 42);
+    println!("Text {}", 42);
+    println!("The quick brown fox jumps over the lazy dog.");
     loop{}
 }
