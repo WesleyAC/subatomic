@@ -1,0 +1,12 @@
+[package]
+name = "subatomic"
+version = "0.1.0"
+authors = ["Wesley Aptekar-Cassels <W.Aptekar@gmail.com>"]
+
+[lib]
+crate-type = ["staticlib"]
+
+[profile.release]
+panic = "abort"
+
+[dependencies]
