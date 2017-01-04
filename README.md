@@ -5,7 +5,7 @@ subatomic is a small toy OS, written in Rust (with a bit of x86 ASM where it's n
 
 It's roughly based on [intermezzOS](https://github.com/intermezzOS/kernel), [Philipp Oppermann's blog_os](https://github.com/phil-opp/blog_os), and [toyos-rs](https://github.com/emk/toyos-rs).
 
-Currently, it just has a simple VGA driver, but more stuff is being worked on :)
+Currently, it just has a simple VGA driver and polling keyboard driver, but more stuff is being worked on :)
 
 To run it, use `make run`. You'll need the following to be installed:
 
@@ -17,3 +17,6 @@ To run it, use `make run`. You'll need the following to be installed:
 * xorriso
 * qemu
 
+Here's what it looks like:
+
+![screenshot](https://github.com/wesleyac/subatomic/raw/master/docs/screenshot.png "Basically like every other toy OS :)")
