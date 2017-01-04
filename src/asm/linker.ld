@@ -34,8 +34,14 @@ SECTIONS {
     *(.text.*)
   }
 
-  /DISCARD/ :
+
+  .rodata :
   {
-    *(.note.gnu.*)
+    *(.rodata .rodata.*)
+  }
+
+  .data.rel.ro :
+  {
+    *(.data.rel.ro.local*) *(.data.rel.ro .data.rel.ro.*)
   }
 }
