@@ -1,11 +1,9 @@
-mod x86;
-mod cpuio;
-
 extern crate spin;
-use spin::Mutex;
-use input::cpuio::Port;
+extern crate cpuio;
 
-/// Port used to access a PS/2 keyboard.
+use input::cpuio::Port;
+use spin::Mutex;
+
 pub static KEYBOARD: Mutex<Port<u8>> = Mutex::new(unsafe {
     Port::new(0x60)
 });
