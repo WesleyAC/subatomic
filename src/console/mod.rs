@@ -3,8 +3,8 @@ pub mod vga;
 
 use core::fmt::Write;
 
-pub fn write_str(s: &str) {
-    vga::WRITER.lock().write_str(s);
+pub fn set_color(color: color::ColorCode) {
+    vga::WRITER.lock().set_color(color);
 }
 
 macro_rules! println {

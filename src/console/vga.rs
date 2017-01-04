@@ -47,6 +47,10 @@ impl Writer {
         }
     }
 
+    pub fn set_color(&mut self, color: ColorCode) {
+        self.color_code = color;
+    }
+
     fn buffer(&mut self) -> &mut Buffer {
         unsafe{ self.buffer.get_mut() }
     }

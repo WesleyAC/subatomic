@@ -15,6 +15,9 @@ pub mod panic;
 
 #[no_mangle]
 pub extern fn kmain(multiboot_information_address: usize) -> ! {
+    console::set_color(console::color::ColorCode::new(console::color::Color::LightBlue, console::color::Color::Black));
+    println!("Welcome to subatomic");
+    console::set_color(console::color::ColorCode::new(console::color::Color::Green, console::color::Color::Black));
     let boot_info = unsafe{ multiboot2::load(multiboot_information_address) };
     let memory_map_tag = boot_info.memory_map_tag()
         .expect("Memory map tag required");
