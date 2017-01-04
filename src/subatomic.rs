@@ -9,11 +9,13 @@ extern crate volatile;
 extern crate spin;
 extern crate multiboot2;
 
-
 #[macro_use]
 mod console;
 mod input;
+mod memory;
 mod panic;
+
+use memory::FrameAllocator;
 
 #[no_mangle]
 pub extern fn kmain(multiboot_information_address: usize) -> ! {
@@ -52,6 +54,10 @@ pub extern fn kmain(multiboot_information_address: usize) -> ! {
 
     println!("Multiboot:");
     println!("Start: 0x{:x} End: 0x{:x}", multiboot_start, multiboot_end);
+
+    let mut frame_allocator = memory::AreaFrameAllocator::new(
+        kernel_start as usize, kernel_end as usize, multiboot_start,
+        multiboot_end, memory_map_tag.memory_areas());
 
     let mut kbd: input::poll::PollingKeyboard = input::poll::PollingKeyboard::new(handle_char);
 
