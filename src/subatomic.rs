@@ -60,6 +60,6 @@ pub extern fn kmain(multiboot_information_address: usize) -> ! {
     }
 }
 
-fn handle_char(c: u8) {
+fn handle_char(c: char) {
     println!("{}", c);
 }
