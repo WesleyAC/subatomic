@@ -57,8 +57,7 @@ impl FrameAllocator for AreaFrameAllocator {
 impl AreaFrameAllocator {
     pub fn new(kernel_start: usize, kernel_end: usize,
                multiboot_start: usize, multiboot_end: usize,
-               memory_areas: MemoryAreaIter) -> AreaFrameAllocator
-    {
+               memory_areas: MemoryAreaIter) -> AreaFrameAllocator {
         let mut allocator = AreaFrameAllocator {
             next_free_frame: Frame::containing_address(0),
             current_area: None,
@@ -71,6 +70,7 @@ impl AreaFrameAllocator {
         allocator.choose_next_area();
         allocator
     }
+
     fn choose_next_area(&mut self) {
         self.current_area = self.areas.clone().filter(|area| {
             let address = area.base_addr + area.length - 1;
