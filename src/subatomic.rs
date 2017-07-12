@@ -26,6 +26,12 @@ pub extern fn kmain(multiboot_info_addr: usize) -> ! {
     let mut frame_allocator = setup_allocator(multiboot_info_addr);
     let mut kbd: input::poll::PollingKeyboard = input::poll::PollingKeyboard::new(handle_char);
 
+    for _ in 0..100 {
+        let frame = frame_allocator.allocate_frame().unwrap();
+        println!("{:?}", frame);
+        frame_allocator.deallocate_frame(frame);
+    }
+
     loop{
         kbd.update();
     }
@@ -39,6 +45,12 @@ fn setup_allocator(multiboot_info_addr: usize) -> memory::AreaFrameAllocator {
     let elf_sections_tag = boot_info.elf_sections_tag()
         .expect("Elf-sections tag required");
 
+    println!("kernel sections:");
+    for section in elf_sections_tag.sections() {
+        println!("addr: 0x{:x}, size: 0x{:x}, flags: 0x{:x}",
+            section.addr, section.size, section.flags);
+    }
+
     let kernel_start = elf_sections_tag.sections().map(|s| s.addr)
         .min().unwrap();
     let kernel_end = elf_sections_tag.sections().map(|s| s.addr + s.size)
@@ -46,6 +58,11 @@ fn setup_allocator(multiboot_info_addr: usize) -> memory::AreaFrameAllocator {
 
     let multiboot_start = multiboot_info_addr;
     let multiboot_end = multiboot_start + (boot_info.total_size as usize);
+
+    println!("kstart:  0x{:x}", kernel_start);
+    println!("kend:    0x{:x}", kernel_end);
+    println!("mbstart: 0x{:x}", multiboot_start);
+    println!("mbend:   0x{:x}", multiboot_end);
 
     memory::AreaFrameAllocator::new(
         kernel_start as usize, kernel_end as usize, multiboot_start,
