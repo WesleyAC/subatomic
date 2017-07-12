@@ -13,8 +13,6 @@ pub struct AreaFrameAllocator {
 
 impl FrameAllocator for AreaFrameAllocator {
     fn allocate_frame(&mut self) -> Option<Frame> {
-        // in `allocate_frame` in `impl FrameAllocator for AreaFrameAllocator`
-
         if let Some(area) = self.current_area {
             // "Clone" the frame to return it if it's free. Frame doesn't
             // implement Clone, but we can construct an identical frame.
