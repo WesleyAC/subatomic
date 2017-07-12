@@ -11,5 +11,6 @@
   "features": "-mmx,-fxsr,-sse,-sse2,+soft-float",
   "pre-link-args": ["-Tlayout.ld", "-Wl,-n", "-nostartfiles"],
   "disable-redzone": true,
-  "eliminate-frame-pointer": false
+  "eliminate-frame-pointer": false,
+  "linker-flavor": "ld"
 }
