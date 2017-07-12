@@ -12,6 +12,7 @@ extern fn eh_personality() {
 pub extern fn rust_begin_panic(_msg: fmt::Arguments,
                                _file: &'static str,
                                _line: u32) -> ! {
+    console::set_color(console::color::ColorCode::new(console::color::Color::Red, console::color::Color::Black));
     println!("PANIC!");
     println!("{}:{}", _file, _line);
     println!("{}", _msg);
