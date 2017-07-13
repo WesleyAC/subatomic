@@ -26,12 +26,6 @@ pub extern fn kmain(multiboot_info_addr: usize) -> ! {
     let mut frame_allocator = setup_allocator(multiboot_info_addr);
     let mut kbd: input::poll::PollingKeyboard = input::poll::PollingKeyboard::new(handle_char);
 
-    for _ in 0..100 {
-        let frame = frame_allocator.allocate_frame().unwrap();
-        println!("{:?}", frame);
-        frame_allocator.deallocate_frame(frame);
-    }
-
     loop{
         kbd.update();
     }
