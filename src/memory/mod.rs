@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 pub mod area_frame_allocator;
 pub mod paging;
 pub use self::area_frame_allocator::AreaFrameAllocator;

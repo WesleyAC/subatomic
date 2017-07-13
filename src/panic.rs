@@ -1,5 +1,3 @@
-// This file defines what happens on a panic, as well as implementing a few
-// other functions that are needed in order to compile.
 use core::fmt;
 use console;
 
@@ -8,6 +6,7 @@ extern fn eh_personality() {
 }
 
 #[lang = "panic_fmt"]
+#[allow(private_no_mangle_fns)]
 #[no_mangle]
 pub extern fn rust_begin_panic(_msg: fmt::Arguments,
                                _file: &'static str,
@@ -20,6 +19,7 @@ pub extern fn rust_begin_panic(_msg: fmt::Arguments,
 }
 
 #[allow(non_snake_case)]
+#[allow(private_no_mangle_fns)]
 #[no_mangle]
 pub extern "C" fn _Unwind_Resume() -> ! {
     loop {}
