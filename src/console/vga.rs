@@ -58,7 +58,7 @@ impl Writer {
     }
 
     pub fn clear_screen(&mut self) {
-        for i in 1..BUFFER_HEIGHT {
+        for _ in 1..BUFFER_HEIGHT {
             self.new_line();
         }
     }

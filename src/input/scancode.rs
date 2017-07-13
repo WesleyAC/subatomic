@@ -1,5 +1,3 @@
-#![no_std]
-
 /// Decode a code in the PS/2 scan code set 1 (legacy set).
 ///
 /// Difference between set 1 and sets 2 & 3:
