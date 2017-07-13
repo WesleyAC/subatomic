@@ -8,6 +8,11 @@ start:
   ; Move Multiboot info pointer to edi to pass it to the kernel. We must not
   ; modify the `edi` register until the kernel it called.
   mov edi, ebx
+
+  mov eax, p4_table
+  or eax, 0b11 ; present + writable
+  mov [p4_table + 511 * 8], eax
+
   ; Point the first entry of the level 4 page table to the first entry in the p3 table
   mov eax, p3_table
   or eax, 0b11 ; set present and writable
