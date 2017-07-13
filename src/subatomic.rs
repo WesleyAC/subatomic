@@ -1,3 +1,4 @@
+#![cfg_attr(feature="clippy", feature(plugin))]
 #![feature(lang_items)]
 #![feature(const_fn)]
 #![feature(unique)]

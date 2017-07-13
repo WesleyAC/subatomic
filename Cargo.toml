@@ -13,6 +13,7 @@ panic = "abort"
 panic = "abort"
 
 [dependencies]
+clippy = {version = "*", optional = true}
 rlibc = "1.0.0"
 volatile = "0.2.1"
 spin = "0.4.5"
@@ -20,3 +21,6 @@ multiboot2 = "0.3.1"
 cpuio = "0.2.0"
 bitflags = "0.7.0"
 x86_64 = "0.1.2"
+
+[features]
+default = []
