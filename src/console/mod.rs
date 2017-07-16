@@ -1,5 +1,6 @@
 pub mod color;
 pub mod vga;
+pub mod serial;
 
 #[allow(dead_code)]
 pub fn clear_screen() {
@@ -19,7 +20,9 @@ macro_rules! println {
 macro_rules! print {
     ($($arg:tt)*) => ({
         use core::fmt::Write;
-        let mut writer = console::vga::WRITER.lock();
-        writer.write_fmt(format_args!($($arg)*)).unwrap();
+        let mut vga_writer = console::vga::WRITER.lock();
+        let mut serial_writer = console::serial::WRITER.lock();
+        vga_writer.write_fmt(format_args!($($arg)*)).unwrap();
+        serial_writer.write_fmt(format_args!($($arg)*)).unwrap();
     });
 }
