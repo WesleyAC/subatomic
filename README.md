@@ -5,7 +5,11 @@ subatomic is a small toy OS, written in Rust (with a bit of x86 ASM where it's n
 
 It's roughly based on [intermezzOS](https://github.com/intermezzOS/kernel), [Philipp Oppermann's blog_os](https://github.com/phil-opp/blog_os), and [toyos-rs](https://github.com/emk/toyos-rs).
 
-Currently, it just has a simple VGA driver and polling keyboard driver, but more stuff is being worked on :)
+Features:
+* VGA driver
+* Keyboard driver
+* Serial console driver
+* Page allocator
 
 To run it, use `make run`. You'll need the following to be installed:
 
