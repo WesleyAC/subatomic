@@ -25,7 +25,7 @@ cargo:
 	xargo build --release --target x86_64-unknown-subatomic-gnu
 
 run: target/os.iso
-	qemu-system-x86_64 -serial stdio -cdrom target/os.iso
+	qemu-system-x86_64 -serial stdio -cdrom target/os.iso -s
 
 clean:
 	cargo clean
