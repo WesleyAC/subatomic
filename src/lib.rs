@@ -38,8 +38,6 @@ pub extern fn kmain(multiboot_info_addr: usize) -> ! {
 
     interrupts::init();
 
-    x86_64::instructions::interrupts::int3();
-
     loop{
         kbd.update();
     }
