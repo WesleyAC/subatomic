@@ -20,7 +20,7 @@ pub struct ActivePageTable {
 impl ActivePageTable {
     pub unsafe fn new() -> ActivePageTable {
         ActivePageTable {
-            p4: Unique::new(table::P4),
+            p4: Unique::new_unchecked(table::P4),
         }
     }
 

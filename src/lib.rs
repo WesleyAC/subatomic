@@ -3,6 +3,8 @@
 #![feature(const_fn)]
 #![feature(unique)]
 #![feature(asm)]
+#![feature(const_unsafe_cell_new)]
+#![feature(const_unique_new)]
 #![no_std]
 
 extern crate rlibc;
