@@ -3,6 +3,7 @@
 #![feature(const_fn)]
 #![feature(unique)]
 #![feature(asm)]
+#![feature(abi_x86_interrupt)]
 #![feature(const_unsafe_cell_new)]
 #![feature(const_unique_new)]
 #![no_std]
@@ -11,15 +12,18 @@ extern crate rlibc;
 extern crate volatile;
 extern crate spin;
 extern crate multiboot2;
+extern crate x86_64;
 #[macro_use]
 extern crate bitflags;
-extern crate x86_64;
+#[macro_use]
+extern crate lazy_static;
 
 #[macro_use]
 mod console;
 mod input;
 mod memory;
 mod panic;
+mod interrupts;
 
 use memory::FrameAllocator;
 
@@ -31,6 +35,10 @@ pub extern fn kmain(multiboot_info_addr: usize) -> ! {
 
     let mut frame_allocator = setup_allocator(multiboot_info_addr);
     let mut kbd: input::poll::PollingKeyboard = input::poll::PollingKeyboard::new(handle_char);
+
+    interrupts::init();
+
+    x86_64::instructions::interrupts::int3();
 
     loop{
         kbd.update();
